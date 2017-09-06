@@ -1,13 +1,39 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!--[if lt IE 7 ]><html lang="fr" is_ie6 lt_ie7 lt_ie8 lt_ie9 lt_ie10 isIE"><![endif]-->
+<!--[if IE 7 ]><html lang="fr" is_ie7 lt_ie8 lt_ie9 lt_ie10 isIE"><![endif]-->
+<!--[if IE 8 ]><html lang="fr" is_ie8 lt_ie9 lt_ie10 isIE"><![endif]-->
+<!--[if IE 9 ]><html lang="fr" is_ie9 lt_ie10 isIE"><![endif]-->
+<!--[if gt IE 9]><html lang="fr" is_ie10 is_ie11 isIE"><![endif]-->
+<!--[if !IE]><!--><html lang=fr><!--<![endif]-->
+<head>
+
+    {% block javascripts %}
+    {% endblock %}
+
+    {{ include('::css.html.twig') }}
+    {{ include('::javascript.html.twig') }}
+    {{ include('::meta.html.twig') }}
+    {% block stylesheet %}
+    {% endblock %}
+</head>
+<body data-route="{{ app.request.attributes.get('_route') }}">
+{% spaceless %}
+
+    <!-- Header -->
+    {% block header %}
+        {{ include('::header.html.twig') }}
+    {% endblock %}
+
+    {% block body %}
+
+    {% endblock %}
+
+    {#Footer#}
+    {% block footer %}
+        {{ include('::footer.html.twig') }}
+    {% endblock %}
+
+
+
+{% endspaceless %}
+</body>
 </html>

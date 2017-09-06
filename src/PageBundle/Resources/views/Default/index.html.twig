@@ -1,0 +1,98 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+    {% javascripts filter="?jsqueeze"
+    '@PageBundle/Resources/public/js/index.js'
+    %}
+    <script src="{{ asset(asset_url) }}" defer></script>
+
+    {% endjavascripts %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div id="app">
+            {%  include('PageBundle:Default:modal/default.html.twig')  %}
+
+            {#TODO put a loading for the blink at reload #}
+            <div class="col-xs-12">
+                <div class="row">
+                    <form action="" v-on:submit.prevent v-on:submit="search" class="searchInput">
+                        <input v-model="input" type="text" class="input textInput" placeholder="Rechercher un ingrédient">
+                        <input class="input submitInput" type="submit">
+                    </form>
+                </div>
+                <div class="alert alert-danger" v-if="noResultat">
+                    <p>Aucun resultat</p>
+                </div>
+            </div>
+
+            <div class="row blockIngredient" v-if="loaded">
+                <ul class="list-all-ingredient">
+                        <li class="col-md-3 col-sm-6 col-xs-12 card-ingredient" v-for="(ingredient, index) in ingredients">
+                            <div class="shadow">
+                                <!-- Add a pagination will be good. -->
+                                <div class="ingredients">
+                                    <template v-if="ingredient.image">
+                                        <div class="image" :style="{ 'background-image': 'url(/uploads/images/' + ingredient.image.url + ')' }">
+                                            <div class="title">
+                                                <div class="textAlign">
+                                                    <h3></span> ${ingredient.name}</h3>
+                                                    <p><span> ${ingredient.famille} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template v-else>
+                                        <div class="image" style="background-image:url({{ asset('bundles/page/images/default-thumbnail.jpg') }})">
+                                            <div class="title">
+                                                <div class="textAlign">
+                                                    <h3></span> ${ingredient.name}</h3>
+                                                    <p><span> ${ingredient.famille} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <div class="lookSingle" @click="handler(true, index)">
+                                        <img  src="{{ asset('bundles/page/images/show.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+                <div class="container-pagination col-xs-12">
+                    <ul class="pagination " v-if="searchData == false">
+                        <template v-if="currentPage == 1">
+                            <li class="page-item disabled">
+                                <a><<</a>
+                            </li>
+                        </template>
+                        <template v-if="currentPage > 1">
+                            <li class="page-item" :disabled="currentPage == 1" v-on:click="setPage(currentPage - 1)">
+                                <a href="#"><<</a>
+                            </li>
+                        </template>
+                        <li  v-for="pageNumber in nbPage" class="page-item" v-on:click="setPage(pageNumber)" v-if="(Math.abs(pageNumber - currentPage) < 10) || (pageNumber == nbPage) || pageNumber == 1" :class="{active: currentPage === pageNumber, last: (pageNumber == nbPage && Math.abs(pageNumber - currentPage) > 10), first:(pageNumber == 1 && Math.abs(pageNumber - currentPage) > 10)}">
+                            <a href="#" >
+                               <span> ${ pageNumber }</a>
+                        </li>
+                        <template v-if="currentPage == nbPage">
+                            <li class="page-item disabled">
+                                <a>>></a>
+                            </li>
+                        </template>
+                        <template v-if="currentPage < nbPage">
+                            <li class="page-item" :disabled="currentPage == 1" v-on:click="setPage(currentPage + 1)">
+                                <a href="#">>></a>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+    app.csvUtility:
+        class: PageBundle\Service\csvService
+        arguments: ["@doctrine.orm.entity_manager", '%kernel.project_dir%']

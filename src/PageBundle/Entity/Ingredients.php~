@@ -1,0 +1,545 @@
+<?php
+
+namespace PageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ingredients
+ *
+ * @ORM\Table(name="ingredients")
+ * @ORM\Entity(repositoryClass="PageBundle\Repository\IngredientsRepository")
+ */
+class Ingredients
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @var ORIGGPCD
+     *
+     * @ORM\Column(name="codeInterneFamille", type="string", length=255, nullable=true)
+     */
+    private $codeInterneFamille;
+
+
+    /**
+     * @var ORIGGPFR
+     *
+     * @ORM\Column(name="famille", type="string", length=255, nullable=true)
+     */
+    private $famille;
+
+
+    /**
+     * @var ORIGFDCD
+     *
+     * @ORM\Column(name="codeInterne", type="string", length=255, nullable=true)
+     */
+    private $codeInterne;
+
+
+    /**
+     * @var ORIGFDNM
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+
+    /**
+     * @var Energie, Règlement UE N� 1169/2011 (kJ/100g)
+     *
+     * @ORM\Column(name="energie", type="string", length=255, nullable=true)
+     */
+    private $energie;
+
+
+    /**
+     * @var Energie, Règlement UE N� 1169/2011 (kcal/100g)
+     *
+     * @ORM\Column(name="energie2", type="string", length=255, nullable=true)
+     */
+    private $energie2;
+
+
+    /**
+     * @var Energie, N x facteur Jones, avec fibres  (kJ/100g)
+     *
+     * @ORM\Column(name="energie3", type="string", length=255, nullable=true)
+     */
+    private $energie3;
+
+
+    /**
+     * @var Energie, N x facteur Jones, avec fibres  (kcal/100g)
+     *
+     * @ORM\Column(name="energie4", type="string", length=255, nullable=true)
+     */
+    private $energie4;
+
+
+    /**
+     * @var Eau (g/100g)
+     *
+     * @ORM\Column(name="eau", type="string", length=255, nullable=true)
+     */
+    private $eau;
+
+
+    /**
+     * @var Protéines (g/100g)
+     *
+     * @ORM\Column(name="proteines", type="string", length=255, nullable=true)
+     */
+    private $proteines;
+
+
+    /**
+     * @var Protéines brutes, N x 6.25 (g/100g)
+     *
+     * @ORM\Column(name="proteinesBrute", type="string", length=255, nullable=true)
+     */
+    private $proteinesBrute;
+
+
+    /**
+     * @var Glucides (g/100g)
+     *
+     * @ORM\Column(name="glucides", type="string", length=255, nullable=true)
+     */
+    private $glucides;
+
+
+    /**
+     * @var Lipides (g/100g)
+     *
+     * @ORM\Column(name="lipides", type="string", length=255, nullable=true)
+     */
+    private $lipides;
+
+
+    /**
+     * @var Sucres (g/100g)
+     *
+     * @ORM\Column(name="sucres", type="string", length=255, nullable=true)
+     */
+    private $sucres;
+
+
+    /**
+     * @var Amidon (g/100g)
+     *
+     * @ORM\Column(name="amidon", type="string", length=255, nullable=true)
+     */
+    private $amidon;
+
+
+    /**
+     * @var Fibres alimentaires (g/100g)
+     *
+     * @ORM\Column(name="fibres", type="string", length=255, nullable=true)
+     */
+    private $fibres;
+
+
+    /**
+     * @var Polyols totaux (g/100g)
+     *
+     * @ORM\Column(name="polyols", type="string", length=255, nullable=true)
+     */
+    private $polyols;
+
+
+    /**
+     * @var Cendres (g/100g)
+     *
+     * @ORM\Column(name="cendres", type="string", length=255, nullable=true)
+     */
+    private $cendres;
+
+
+    /**
+     * @var Alcool (g/100g)
+     *
+     * @ORM\Column(name="alcool", type="string", length=255, nullable=true)
+     */
+    private $alcool;
+
+
+    /**
+     * @var Acides organiques (g/100g)
+     *
+     * @ORM\Column(name="acides", type="string", length=255, nullable=true)
+     */
+    private $acides;
+
+
+    /**
+     * @var AG saturés (g/100g)
+     *
+     * @ORM\Column(name="agSatures", type="string", length=255, nullable=true)
+     */
+    private $agSatures;
+
+
+    /**
+     * @var AG monoinsaturés (g/100g)
+     *
+     * @ORM\Column(name="agMono", type="string", length=255, nullable=true)
+     */
+    private $agMono;
+
+
+    /**
+     * @var AG polyinsaturés (g/100g)
+     *
+     * @ORM\Column(name="agPoly", type="string", length=255, nullable=true)
+     */
+    private $agPoly;
+
+
+    /**
+     * @var AG 4:0, butyrique (g/100g)
+     *
+     * @ORM\Column(name="ag4", type="string", length=255, nullable=true)
+     */
+    private $ag4;
+
+
+    /**
+     * @var AG 6:0, caproïque (g/100g)
+     *
+     * @ORM\Column(name="ag6", type="string", length=255, nullable=true)
+     */
+    private $ag6;
+
+
+    /**
+     * @var AG 8:0, caprylique (g/100g)
+     *
+     * @ORM\Column(name="ag8", type="string", length=255, nullable=true)
+     */
+    private $ag8;
+
+
+    /**
+     * @var AG 10:0, caprique (g/100g)
+     *
+     * @ORM\Column(name="ag10", type="string", length=255, nullable=true)
+     */
+    private $ag10;
+
+
+    /**
+     * @var AG 12:0, laurique (g/100g)
+     *
+     * @ORM\Column(name="ag12", type="string", length=255, nullable=true)
+     */
+    private $ag12;
+
+
+    /**
+     * @var AG 14:0, myristique (g/100g)
+     *
+     * @ORM\Column(name="ag14", type="string", length=255, nullable=true)
+     */
+    private $ag14;
+
+
+    /**
+     * @var AG 16:0, palmitique (g/100g)
+     *
+     * @ORM\Column(name="ag16", type="string", length=255, nullable=true)
+     */
+    private $ag16;
+
+
+    /**
+     * @var AG 18:0, stéarique (g/100g)
+     *
+     * @ORM\Column(name="ag18", type="string", length=255, nullable=true)
+     */
+    private $ag18;
+
+
+    /**
+     * @var AG 18:1 9c (n-9), oléique (g/100g)
+     *
+     * @ORM\Column(name="ag181", type="string", length=255, nullable=true)
+     */
+    private $ag181;
+
+
+    /**
+     * @var AG 18:2 9c,12c (n-6), linoléique (g/100g)
+     *
+     * @ORM\Column(name="ag182", type="string", length=255, nullable=true)
+     */
+    private $ag182;
+
+
+    /**
+     * @var AG 18:3 c9,c12,c15 (n-3), alpha-linoléique (g/100g)
+     *
+     * @ORM\Column(name="ag183", type="string", length=255, nullable=true)
+     */
+    private $ag183;
+
+
+    /**
+     * @var AG 20:4 5c,8c,11c,14c (n-6), arachidonique (g/100g)
+     *
+     * @ORM\Column(name="ag204", type="string", length=255, nullable=true)
+     */
+    private $ag204;
+
+
+    /**
+     * @var AG 20:5 5c,8c,11c,14c,17c (n-3) EPA (g/100g)
+     *
+     * @ORM\Column(name="ag205", type="string", length=255, nullable=true)
+     */
+    private $ag205;
+
+
+    /**
+     * @var AG 22:6 4c,7c,10c,13c,16c,19c (n-3) DHA (g/100g)
+     *
+     * @ORM\Column(name="ag226", type="string", length=255, nullable=true)
+     */
+    private $ag226;
+
+
+    /**
+     * @var Cholestérol (mg/100g)
+     *
+     * @ORM\Column(name="cholesterol", type="string", length=255, nullable=true)
+     */
+    private $cholesterol;
+
+
+    /**
+     * @var Sel chlorure de sodium (g/100g)
+     *
+     * @ORM\Column(name="sel", type="string", length=255, nullable=true)
+     */
+    private $sel;
+
+
+    /**
+     * @var Calcium (mg/100g)
+     *
+     * @ORM\Column(name="calcium", type="string", length=255, nullable=true)
+     */
+    private $calcium;
+
+
+    /**
+     * @var Chlorure (mg/100g)
+     *
+     * @ORM\Column(name="chlorure", type="string", length=255, nullable=true)
+     */
+    private $chlorure;
+
+
+    /**
+     * @var Cuivre (mg/100g)
+     *
+     * @ORM\Column(name="cuivre", type="string", length=255, nullable=true)
+     */
+    private $cuivre;
+
+
+    /**
+     * @var Fer (mg/100g)
+     *
+     * @ORM\Column(name="fer", type="string", length=255, nullable=true)
+     */
+    private $fer;
+
+
+    /**
+     * @var Iode (�g/100g)
+     *
+     * @ORM\Column(name="iode", type="string", length=255, nullable=true)
+     */
+    private $iode;
+
+
+    /**
+     * @var Magnésium (mg/100g)
+     *
+     * @ORM\Column(name="magnesium", type="string", length=255, nullable=true)
+     */
+    private $magnesium;
+
+
+    /**
+     * @var Manganèse (mg/100g)
+     *
+     * @ORM\Column(name="manganese", type="string", length=255, nullable=true)
+     */
+    private $manganese;
+
+
+    /**
+     * @var Phosphore (mg/100g)
+     *
+     * @ORM\Column(name="phosphore", type="string", length=255, nullable=true)
+     */
+    private $phosphore;
+
+
+    /**
+     * @var Potassium (mg/100g)
+     *
+     * @ORM\Column(name="potassium", type="string", length=255, nullable=true)
+     */
+    private $potassium;
+
+
+    /**
+     * @var S�l�nium (�g/100g)
+     *
+     * @ORM\Column(name="solonium", type="string", length=255, nullable=true)
+     */
+    private $solonium;
+
+
+    /**
+     * @var Sodium (mg/100g)
+     *
+     * @ORM\Column(name="sodium", type="string", length=255, nullable=true)
+     */
+    private $sodium;
+
+
+    /**
+     * @var Zinc (mg/100g)
+     *
+     * @ORM\Column(name="zinc", type="string", length=255, nullable=true)
+     */
+    private $zinc;
+
+
+    /**
+     * @var R�tinol (�g/100g)
+     *
+     * @ORM\Column(name="retinol", type="string", length=255, nullable=true)
+     */
+    private $retinol;
+
+
+    /**
+     * @var Beta-Carotène (µg/100g)
+     *
+     * @ORM\Column(name="betaCarotine", type="string", length=255, nullable=true)
+     */
+    private $betaCarotine;
+
+
+    /**
+     * @var Vitamine D (�g/100g)
+     *
+     * @ORM\Column(name="vitD", type="string", length=255, nullable=true)
+     */
+    private $vitD;
+
+
+    /**
+     * @var Vitamine E (mg/100g)
+     *
+     * @ORM\Column(name="vitE", type="string", length=255, nullable=true)
+     */
+    private $vitE;
+
+
+    /**
+     * @var Vitamine K1 (�g/100g)
+     *
+     * @ORM\Column(name="vitK1", type="string", length=255, nullable=true)
+     */
+    private $vitK1;
+
+
+    /**
+     * @var Vitamine K2 (�g/100g)
+     *
+     * @ORM\Column(name="vitK2", type="string", length=255, nullable=true)
+     */
+    private $vitK2;
+
+
+    /**
+     * @var Vitamine C (mg/100g)
+     *
+     * @ORM\Column(name="vitC", type="string", length=255, nullable=true)
+     */
+    private $vitC;
+
+
+    /**
+     * @var Vitamine B1 ou Thiamine (mg/100g)
+     *
+     * @ORM\Column(name="vitB1", type="string", length=255, nullable=true)
+     */
+    private $vitB1;
+
+
+    /**
+     * @var Vitamine B2 ou Riboflavine (mg/100g)
+     *
+     * @ORM\Column(name="bitB2", type="string", length=255, nullable=true)
+     */
+    private $bitB2;
+
+
+    /**
+     * @var Vitamine B3 ou PP ou Niacine (mg/100g)
+     *
+     * @ORM\Column(name="bitB3", type="string", length=255, nullable=true)
+     */
+    private $bitB3;
+
+
+    /**
+     * @var Vitamine B5 ou Acide pantoth�nique (mg/100g)
+     *
+     * @ORM\Column(name="vitB5", type="string", length=255, nullable=true)
+     */
+    private $vitB5;
+
+
+    /**
+     * @var Vitamine B6 (mg/100g)
+     *
+     * @ORM\Column(name="vitB6", type="string", length=255, nullable=true)
+     */
+    private $vitB6;
+
+
+    /**
+     * @var Vitamine B9 ou Folates totaux (�g/100g)
+     *
+     * @ORM\Column(name="vitB9", type="string", length=255, nullable=true)
+     */
+    private $vitB9;
+
+
+    /**
+     * @var Vitamine B12 (µg/100g)
+     *
+     * @ORM\Column(name="bitB12", type="string", length=255, nullable=true)
+     */
+    private $bitB12;
+
+
+}

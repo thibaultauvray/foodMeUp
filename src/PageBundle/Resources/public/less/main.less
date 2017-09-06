@@ -1,0 +1,265 @@
+body{
+    background: rgb(250,249,277);
+    background: -moz-linear-gradient(-45deg,  rgba(250,249,247,1) 0%, rgba(221,218,209,1) 100%);
+    background: -webkit-linear-gradient(-45deg,  rgba(250,249,247,1) 0%,rgba(221,218,209,1) 100%);
+    background: linear-gradient(135deg,  rgba(250,249,247,1) 0%,rgba(221,218,209,1) 100%);
+    padding-top: 20px;
+}
+
+.btn-red{
+    background-color: @red;
+    color: white;
+    border-color: white;
+}
+strong{
+    color: @red;
+}
+.shadow{
+        box-shadow: 1px 10px 20px 0px rgba(218, 215, 206,0.8);
+}
+
+.searchInput{
+    .input{
+        padding: 10px;
+    }
+    .textInput{
+        width:90%;
+        border: 1px solid @red;
+        border-radius: 5px 0 0 5px;
+    }
+    .submitInput{
+        width: 10%;
+        border: 1px solid @red;
+        border-bottom: 1px solid @red;
+        border-right: 1px solid @red;
+        background: -webkit-linear-gradient(to right, #cb2d3e, #ef473a);
+        background: linear-gradient(to right, #cb2d3e, #ef473a);
+        border-left: 0;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        background: @red;
+    }
+}
+
+.imageCorner{
+    font-size: 14px;
+    .fileInput{
+        width: 100%;
+        margin-bottom: 9px;
+        margin-top: 10px;
+    }
+    .submit{
+        width: 100%;
+        background: @red;
+        border: none;
+        color: white;
+    }
+}
+
+.blockIngredient{
+    .container-pagination{
+        text-align:center;
+    }
+    .pagination{
+        >.active{
+         >a{
+            color: white;
+            background-color: @red;
+            border-color: @red;
+         }
+        }
+        .disabled{
+            a{
+                color: @lightgrey;
+            }
+        }
+        li{
+            float:left;
+            a {
+                color: @red;
+            }
+
+        }
+        li.first>a::after{
+            content:'...'
+        }
+
+        li.last>a::before {
+          content:'...'
+        }
+    }
+    .texte{
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: @lightgrey;
+
+        h4{
+            font-size: 18px;
+            font-weight: 700;
+
+            color: @black;
+        }
+
+        .name{
+            margin-top: 50px;
+            text-align: center;
+        }
+
+    }
+    .list-all-ingredient{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: stretch;
+        padding-left: 0;
+        .lookSingle{
+                background-color: @red;
+                padding: 10px;
+                position: absolute;
+                transform: translateX(-50%);
+                left: 50%;
+                border-radius: 50px;
+                bottom: 10px;
+                z-index: 1000;
+                cursor: pointer;
+                img{
+                    width: 30px;
+                }
+        }
+        .ingredients{
+            position: relative;
+        }
+        .card-ingredient{
+                display: inline-block;
+                margin-bottom: 30px;
+                .ingredients{
+                    display: block;
+                    overflow: hidden;
+                    padding-bottom: 100%;
+                }
+                .image{
+
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+
+                }
+        }
+         .title{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+
+            white-space: pre-wrap;
+            .textAlign{
+                h3{
+                    color: @red;
+                    font-size: 20px;
+                }
+            color: @lightgrey;
+                text-align: center;
+                position: absolute;
+                padding-left: 10px;
+                padding-right: 10px;
+                top: 50%;
+                margin: 0;
+                left: 0;
+                width: 100%;
+                transform: translateY(-50%);
+            }
+         }
+    }
+}
+
+/** MODAL **/
+
+
+.modal-mask {
+    font-size:2em;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 100%;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+
+.modal-header{
+    p{
+        //font-size: 16px;
+    }
+    img{
+        width: 100%;
+    }
+    h3 {
+      margin-top: 0;
+      color: #42b983;
+    }
+}
+
+.modal-body {
+    height: 250px;
+    overflow-y: scroll;
+    margin: 20px 0;
+    li{
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    .label-ing{
+        color: #e43;
+        display: inline-block;
+    }
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}

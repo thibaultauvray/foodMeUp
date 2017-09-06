@@ -1,0 +1,104 @@
+{# This modal is not pretty TODO #}
+<template v-if="showModal">
+    <div class="modal-mask">
+        <div class="modal-wrapper">
+            <div class="modal-container">
+
+                <div class="modal-header">
+                    <div class="col-xs-6 col-lg-1 imageCorner">
+                        <template v-if="ingredients[this.counter].image">
+                            <img :src="'/uploads/images/'+ ingredients[this.counter].image.url" alt="">
+                        </template>
+                        <template v-else>
+                            <img src="{{ asset('bundles/page/images/default-thumbnail.jpg') }}" alt="">
+                        </template>
+                        <form action="">
+                            <form ref="form" action="" v-on:submit.prevent v-on:submit="updateImage" class="searchInput">
+                                <input class="fileInput" type="file" name="url" ref="file" class="" placeholder="Rechercher un ingrédient" accept=".jpg, .jpeg">
+                                <input  class="submit" type="submit">
+                            </form>
+                        </form>
+                        <div class="alert" id="messageFile" class="hidden"><p>${ message } </p></div>
+                    </div>
+                    <div class="col-xs-6 col-lg-9 titleHeader">
+                        <p><strong>ORIGFDNM </strong>${ ingredients[this.counter].name } </p>
+                        <p><strong>ORIGFDCD </strong>${ ingredients[this.counter].codeInterne }</p>
+                        <p><strong>ORIGGPFR </strong>${ ingredients[this.counter].famille }</p>
+                        <p><strong>ORIGFDCD </strong>${ ingredients[this.counter].codeInterne }</p>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <ul>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Energie, Règlement UE No 1169/2011 (kcal/100g)</span> ${ ingredients[this.counter].energie2}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Energie, N x facteur Jones, avec fibres  (kJ/100g)</span> ${ ingredients[this.counter].energie3}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Energie, N x facteur Jones, avec fibres  (kcal/100g)</span> ${ ingredients[this.counter].energie4}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Eau (g/100g)</span> ${ ingredients[this.counter].eau}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Protéines (g/100g)</span> ${ ingredients[this.counter].proteines}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Protéines brutes, N x 6.25 (g/100g)</span> ${ ingredients[this.counter].proteinesBrute}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Glucides (g/100g)</span> ${ ingredients[this.counter].glucides}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Lipides (g/100g)</span> ${ ingredients[this.counter].lipides}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Sucres (g/100g)</span> ${ ingredients[this.counter].sucres}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Amidon (g/100g)</span> ${ ingredients[this.counter].amidon}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Fibres alimentaires (g/100g)</span> ${ ingredients[this.counter].fibres}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Polyols totaux (g/100g)</span> ${ ingredients[this.counter].polyols}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Cendres (g/100g)</span> ${ ingredients[this.counter].cendres}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Alcool (g/100g)</span> ${ ingredients[this.counter].alcool}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Acides organiques (g/100g)</span> ${ ingredients[this.counter].acides}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG saturés (g/100g)</span> ${ ingredients[this.counter].agSatures}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG monoinsaturés (g/100g)</span> ${ ingredients[this.counter].agMono}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG polyinsaturés (g/100g)</span> ${ ingredients[this.counter].agPoly}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 4:0, butyrique (g/100g)</span> ${ ingredients[this.counter].ag4}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 6:0, caproïque (g/100g)</span> ${ ingredients[this.counter].ag6}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 8:0, caprylique (g/100g)</span> ${ ingredients[this.counter].ag8}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 10:0, caprique (g/100g)</span> ${ ingredients[this.counter].ag10}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 12:0, laurique (g/100g)</span> ${ ingredients[this.counter].ag12}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 14:0, myristique (g/100g)</span> ${ ingredients[this.counter].ag14}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 16:0, palmitique (g/100g)</span> ${ ingredients[this.counter].ag16}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 18:0, stéarique (g/100g)</span> ${ ingredients[this.counter].ag18}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 18:1 9c (n-9), oléique (g/100g)</span> ${ ingredients[this.counter].ag181}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 18:2 9c,12c (n-6), linoléique (g/100g)</span> ${ ingredients[this.counter].ag182}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 18:3 c9,c12,c15 (n-3), alpha-linoléique (g/100g)</span> ${ ingredients[this.counter].ag183}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 20:4 5c,8c,11c,14c (n-6), arachidonique (g/100g)</span> ${ ingredients[this.counter].ag204}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 20:5 5c,8c,11c,14c,17c (n-3) EPA (g/100g)</span> ${ ingredients[this.counter].ag205}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">AG 22:6 4c,7c,10c,13c,16c,19c (n-3) DHA (g/100g)</span> ${ ingredients[this.counter].ag226}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Cholestérol (mg/100g)</span> ${ ingredients[this.counter].cholesterol}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Sel chlorure de sodium (g/100g)</span> ${ ingredients[this.counter].sel}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Calcium (mg/100g)</span> ${ ingredients[this.counter].calcium}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Chlorure (mg/100g)</span> ${ ingredients[this.counter].chlorure}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Cuivre (mg/100g)</span> ${ ingredients[this.counter].cuivre}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Fer (mg/100g)</span> ${ ingredients[this.counter].fer}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Iode (µg/100g)</span> ${ ingredients[this.counter].iode}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Magnésium (mg/100g)</span> ${ ingredients[this.counter].magnesium}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Manganèse (mg/100g)</span> ${ ingredients[this.counter].manganese}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Phosphore (mg/100g)</span> ${ ingredients[this.counter].phosphore}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Potassium (mg/100g)</span> ${ ingredients[this.counter].potassium}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Selenium (µg/100g)</span> ${ ingredients[this.counter].solonium}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Sodium (mg/100g)</span> ${ ingredients[this.counter].sodium}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Zinc (mg/100g)</span> ${ ingredients[this.counter].zinc}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Retinol (�g/100g)</span> ${ ingredients[this.counter].retinol}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Beta-Carotène (µg/100g)</span> ${ ingredients[this.counter].betaCarotine}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine D (µg/100g)</span> ${ ingredients[this.counter].vitD}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine E (mg/100g)</span> ${ ingredients[this.counter].vitE}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine K1 (µg/100g)</span> ${ ingredients[this.counter].vitK1}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine K2 (µg/100g)</span> ${ ingredients[this.counter].vitK2}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine C (mg/100g)</span> ${ ingredients[this.counter].vitC}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B1 ou Thiamine (mg/100g)</span> ${ ingredients[this.counter].vitB1}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B2 ou Riboflavine (mg/100g)</span> ${ ingredients[this.counter].bitB2}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B3 ou PP ou Niacine (mg/100g)</span> ${ ingredients[this.counter].bitB3}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B5 ou Acide pantothénique (mg/100g)</span> ${ ingredients[this.counter].vitB5}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B6 (mg/100g)</span> ${ ingredients[this.counter].vitB6}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B9 ou Folates totaux (µg/100g)</span> ${ ingredients[this.counter].vitB9}</li>
+                        <li class="col-sm-12 col-lg-6"><span class="col-sm-9 label-ing">Vitamine B12 (µg/100g)</span> ${ ingredients[this.counter].bitB12}</li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-xs-12">
+                        <span class="btn btn-red" href="" v-on:keyup.esc="showModal = false" v-on:click="showModal = false">Close</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

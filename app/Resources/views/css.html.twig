@@ -1,0 +1,13 @@
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+
+{% stylesheets
+"@PageBundle/Resources/public/less/base.less"
+filter='?cssrewrite'
+output= 'css/style.css'
+%}
+<link rel="stylesheet" href="{{ asset(asset_url) }}" media="screen" type="text/css"/>
+{% endstylesheets %}
+
+{% stylesheets '@bootstrap_css' %}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+{% endstylesheets %}
