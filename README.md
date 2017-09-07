@@ -12,3 +12,5 @@ How to launch
 * Go to
 
 ``` [IP DE LA DOCKER MACHINE]:8000 OR 127.0.0.1:8000  ```
+
+``` Documentation => /documentation ```
