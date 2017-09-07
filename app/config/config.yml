@@ -72,7 +72,7 @@ assetic:
     assets:
         bootstrap_css:
             inputs:
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less'
             output: css/bootstrap.css
             filters: [cssrewrite]
 
