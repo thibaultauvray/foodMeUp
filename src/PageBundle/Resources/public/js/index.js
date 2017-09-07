@@ -1,5 +1,4 @@
-/*
- */
+Vue.use(VueResource);
 Vue.component('modal', {
     template: '#modal-template'
 })

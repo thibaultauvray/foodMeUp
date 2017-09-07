@@ -6,12 +6,15 @@
 <!--[if !IE]><!--><html lang=fr><!--<![endif]-->
 <head>
 
-    {% block javascripts %}
-    {% endblock %}
+
 
     {{ include('::css.html.twig') }}
     {{ include('::javascript.html.twig') }}
     {{ include('::meta.html.twig') }}
+
+    {% block javascripts %}
+    {% endblock %}
+
     {% block stylesheet %}
     {% endblock %}
 </head>
