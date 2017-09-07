@@ -22,10 +22,6 @@ class csvService extends CSVArray
         parent::__construct();
     }
 
-    /*
-     * This things can occurs Memory size limit and i can't touch PHP.ini on 42's mac.
-     * Solution is Docker or a more optimized filler data or just data fixtures ?
-     */
     public function populateDatabase()
     {
         $fullPath= $this->path . '/Table_Ciqual_2016.csv';
@@ -50,21 +46,12 @@ class csvService extends CSVArray
                 {
                     $string = 'set'.ucfirst(array_keys($this->cleanArray)[$k]);
 
-                    call_user_func_array(array($data, $string), array(trim(utf8_decode($v))));
+                    call_user_func_array(array($data, $string), array(trim(iconv("ISO-8859-1", "UTF-8", $v))));
                     $this->em->persist($data);
                 }
-                /*
-                 * This things don't below here but after the foreach but i cant change the php.ini so.
-                 * Solutions : Put on a Docker @TODO
-                 */
-//                $this->em->flush();
-
             }
            $i++;
         }
-        /*
-         * HERE IS BETTER
-        */
         $this->em->flush();
     }
 }
